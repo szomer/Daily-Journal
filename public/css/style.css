@@ -1,0 +1,23 @@
+html,
+body {
+  height: 100%;
+  height: 100vh;
+  margin: 0;
+}
+
+main {
+  padding-bottom: 50px;
+}
+.navbar-brand,
+.nav-link {
+  letter-spacing: 0.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(117, 117, 117);
+}
+
+a:hover {
+  color: rgb(58, 58, 58);
+}
