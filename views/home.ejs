@@ -27,7 +27,9 @@
               <h3 class="card-header"><%= post.title %></h3>
               <form class="mx-3 mt-2" action="/post/<%= i %>" method="GET">
                 <p class="card-body p-0">
-                  <%= (post.content).substring(0, 215) + '...' %>
+                  <%if(post.content.length > 214){%>
+                  <%=(post.content).substring(0,215) + '...'%> <%}else{%>
+                  <%=post.content%> <%}%>
                 </p>
 
                 <button class="btn btn-outline-info" type="submit">

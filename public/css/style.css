@@ -13,11 +13,23 @@ main {
   letter-spacing: 0.2rem;
 }
 
-a {
+a,
+#btn-delete {
   text-decoration: none;
   color: rgb(117, 117, 117);
+  text-align: center;
 }
 
-a:hover {
+a:hover,
+#btn-delete:hover {
   color: rgb(58, 58, 58);
+}
+
+#btn-delete {
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  width: 30px;
+  padding: 0;
+  margin-top: 20px;
 }

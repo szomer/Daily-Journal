@@ -9,9 +9,9 @@ const PARAGRAPHS = {
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti reprehenderit in, suscipit quas architecto vitae, beatae expedita nobis perspiciatis mollitia dolores unde officia. Facilis, quam? Esse nostrum aspernatur eum, dignissimos, autem culpa consequuntur dolorem minima ipsum perspiciatis temporibus repellat porro sint quo quos quasi sapiente incidunt perferendis delectus corporis. Libero eius maxime atque eveniet architecto.',
 };
 
-let posts = [];
+// let posts = [];
 
-module.exports = function (app) {
+module.exports = function (app, posts, Post) {
   app.get('/', function (req, res) {
     res.render('home', { home: PARAGRAPHS.home, posts: posts });
   });
@@ -27,14 +27,19 @@ module.exports = function (app) {
   app.get('/compose', function (req, res) {
     res.render('compose');
   });
-  app.post('/compose', urlencodedParser, function (req, res) {
+  app.post('/compose', urlencodedParser, async function (req, res) {
     const post = {
       title: req.body.postTitle,
       content: req.body.postBody,
     };
-    posts.push(post);
 
-    res.render('home', { home: PARAGRAPHS.home, posts: posts });
+    insertPost(Post, post).then(function (result) {
+      if (result) {
+        post.id = result._id.valueOf();
+        posts.push(post);
+        res.redirect('/');
+      }
+    });
   });
 
   app.get('/post/:id', function (req, res) {
@@ -46,4 +51,46 @@ module.exports = function (app) {
       res.redirect('/error');
     }
   });
+
+  app.post('/delete', urlencodedParser, function (req, res) {
+    const postId = req.body.postId;
+
+    posts.forEach((post, i) => {
+      if (post.id === postId) {
+        if (deletePost(Post, postId)) {
+          const index = i;
+          if (index > -1) {
+            // only splice array when item is found
+            posts.splice(index, 1); // 2nd parameter means remove one item only
+          }
+        }
+      }
+    });
+
+    res.redirect('/');
+  });
 };
+
+// Insert post into db
+async function insertPost(Post, post) {
+  const newPost = new Post({ title: post.title, content: post.content });
+
+  try {
+    let savePost = await newPost.save();
+    console.log('[INSERT]', savePost.title);
+    return savePost;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+// Delete post from db
+async function deletePost(Post, postId) {
+  try {
+    const deletePost = await Post.deleteOne({ _id: postId });
+    console.log('[DELETE]', deletePost);
+    return deletePost;
+  } catch (err) {
+    console.log(err);
+  }
+}
