@@ -3,6 +3,7 @@
 Frontend / backend web application to keep a journal.
 
 - Developed using NodeJS, Bootstrap, Bootstrap Icons, EJS template, MongoDB with mongoose
+- To view click [HERE](https://daily-journal-app-2902.onrender.com) (Render hosting service - app goes to sleep while inactive).
 
 ## Screenshots
 
