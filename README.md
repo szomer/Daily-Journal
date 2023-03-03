@@ -1,12 +1,13 @@
 # Daily Journal
 
-Developed using NodeJS, Bootstrap, Bootstrap Icons, EJS template, MongoDB atlas with mongoose
+Frontend / backend web application to keep a journal.
 
-<br>
-<p align="center">
-  <img src="screenshot.jpg?raw=true" alt="Screenshot of the App"/>
-</p>
+- Developed using NodeJS, Bootstrap, Bootstrap Icons, EJS template, MongoDB with mongoose
 
-<p align="center">
-  <img src="screenshot2.jpg?raw=true" alt="Screenshot of the App"/>
-</p>
+## Screenshots
+
+> The home screen with the added journal entries.
+> ![alt login and signup page](screenshot.jpg?raw=true)
+
+> Compose a new journal entry
+> ![alt Compose a new journal entry](screenshot3.jpg?raw=true)

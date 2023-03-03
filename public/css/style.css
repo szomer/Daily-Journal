@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto:wght@300;400&display=swap');
 html,
 body {
   height: 100%;
@@ -5,9 +6,23 @@ body {
   margin: 0;
 }
 
-main {
-  padding-bottom: 50px;
+body {
+  background: url('../images/bg.jpg');
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat;
 }
+
+main {
+  height: 100%;
+  padding-bottom: 50px;
+  background: linear-gradient(
+    0deg,
+    rgba(112, 255, 0, 0.2218020997461485) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
 .navbar-brand,
 .nav-link {
   letter-spacing: 0.2rem;
@@ -16,13 +31,14 @@ main {
 a,
 #btn-delete {
   text-decoration: none;
-  color: rgb(117, 117, 117);
+  color: rgb(0, 0, 0);
   text-align: center;
 }
 
 a:hover,
-#btn-delete:hover {
-  color: rgb(58, 58, 58);
+#btn-delete:hover,
+.nav-link:hover {
+  color: rgba(100, 213, 0, 0.581);
 }
 
 #btn-delete {
@@ -32,4 +48,29 @@ a:hover,
   width: 30px;
   padding: 0;
   margin-top: 20px;
+}
+
+.color-bg {
+  height: 100%;
+  background-color: rgba(119, 255, 0, 0.174);
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(106, 106, 106, 0.603);
+}
+
+.card {
+  background-color: rgba(119, 255, 0, 0.174);
+  border-radius: 10px;
+  box-shadow: 4px 4px 10px rgba(106, 106, 106, 0.603);
+}
+.card-header {
+  background-color: rgb(255, 255, 255);
+}
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
 }
